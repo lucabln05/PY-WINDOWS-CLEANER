@@ -10,7 +10,7 @@ import winshell
 print("""
 Willkommen im Windows Cache CLEANER
 
-Version 1.1
+Version 1.2
 
 Nutzung auf eigene Gefahr, keine Haftung fuer Schaeden oder Datenverlust.
 """)
