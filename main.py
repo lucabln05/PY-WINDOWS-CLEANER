@@ -54,12 +54,4 @@ def cache_clean_process():
 
 
 
-
-
-
-
-
-
-
-
 user_start_question()
