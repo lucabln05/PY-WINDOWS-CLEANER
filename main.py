@@ -1,7 +1,6 @@
 import os
-
-
-
+import shutil
+#https://linuxize.com/post/python-delete-files-and-directories/
 
 print("""
 Willkommen im Windows Cache CLEANER
@@ -24,19 +23,34 @@ def user_start_question():
         print("Befehl leider nicht verstanden")
         user_start_question()
 
+#TEMP Ordner wird Lokalisiert und alle Dateien darin geloescht
+
 def cache_clean_process():
-    print("Process start")
-    temp_file_location = os.getenv('temp')
-    print(temp_file_location)
-    os.chmod(temp_file_location, 0o777)
-    dir = temp_file_location
+    print("Process startet ...")
+
+    temp_file_location = os.getenv('temp')  #Temp Ordner wir mit hilfe os.gentev gesucht
+
+    # Rechte werden angepasst das Python Script die meisten Dateien Loeschen kann
+    try:
+        os.chmod(temp_file_location, 0o777)
+    except OSError as err:
+        print(f"Fehler beim anpassen der Rechte: {err}")
 
 
-    for file in os.listdir(dir):
+    #Inhalt aus temp ordner wird ausgelesen, wenn ordner dann wir mit shutil.rmtree dieser entfernt.
+    for dir_ in os.scandir(temp_file_location):
+        if dir_.is_dir():
+            try:
+                shutil.rmtree(dir_.path)
+            except OSError as err:
+                print(f"{dir_.path} konnte nicht entfernt werden da: {err}")
+
+    # Inhalt aus temp ordner werden ausgelese, wenn datei dann wird mit os.remove datei geloescht.
+    for file in os.listdir(temp_file_location):
         try:
-            os.remove(os.path.join(dir, file))
+            os.remove(os.path.join(temp_file_location, file))
         except PermissionError as err:
-            print(f"{file} konnte nicht entfernt werden da: {err}" )
+            print(f"{file} konnte nicht entfernt werden da: {err}")
 
 
 
