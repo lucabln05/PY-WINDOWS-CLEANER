@@ -49,7 +49,7 @@ def clean_process():
         for dir_ in os.scandir(temp_file_location):
             if dir_.is_dir():
                 try:
-                    shutil.rmtree(dir_.path)
+                    shutil.rmtree(dir_.path, ignore_errors=True)
                 except OSError as err:
                     print(f"{dir_.path} konnte nicht entfernt werden da: {err}")
 
@@ -82,7 +82,7 @@ def clean_process():
 
         # Inhalt aus temp ordner wird ausgelesen, wenn ordner dann wir mit shutil.rmtree dieser entfernt.
         try:
-            shutil.rmtree(windowsold_file_location, ignore_errors=False, onerror=None)
+            shutil.rmtree(windowsold_file_location, ignore_errors=True, onerror=None)       #ignore_error um dateinen zuskippen wo der zugriff verweigert wird
         except OSError as err:
             print(f"{windowsold_file_location} konnte nicht entfernt werden da: {err}")
 
