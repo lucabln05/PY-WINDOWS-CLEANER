@@ -71,19 +71,20 @@ def clean_process():
     # WINDOWS.OLD Folder wird gelert mittels winshell
     #
     def delete_windows_old():
-        temp_file_location = '/Windows.old'
+
+        windowsold_file_location = '/Windows.old'
 
         # Rechte werden angepasst das Python Script die meisten Dateien Loeschen kann
         try:
-            os.chmod(temp_file_location, 0o777)
+            os.chmod(windowsold_file_location, 0o777)
         except OSError as err:
             print(f"Fehler beim anpassen der Rechte: {err}")
 
         # Inhalt aus temp ordner wird ausgelesen, wenn ordner dann wir mit shutil.rmtree dieser entfernt.
         try:
-            shutil.rmtree(temp_file_location)
+            shutil.rmtree(windowsold_file_location, ignore_errors=False, onerror=None)
         except OSError as err:
-            print(f"{temp_file_location} konnte nicht entfernt werden da: {err}")
+            print(f"{windowsold_file_location} konnte nicht entfernt werden da: {err}")
 
 
     delete_temp_files()
