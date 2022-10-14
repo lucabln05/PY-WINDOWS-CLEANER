@@ -2,15 +2,15 @@ import os
 import shutil
 #https://linuxize.com/post/python-delete-files-and-directories/
 
-import winshell         #must also install pypiwin32 (pip install winshell and pip install pypwin32)
-
+import winshell
 #https://github.com/tjguk/winshell
+# must also install pypiwin32 (pip install winshell and pip install pypwin32)
 
 
 print("""
 Willkommen im Windows Cache CLEANER
 
-Version 1.0
+Version 1.1
 
 Nutzung auf eigene Gefahr, keine Haftung fuer Schaeden oder Datenverlust.
 """)
@@ -89,11 +89,7 @@ def clean_process():
     delete_temp_files()
     delete_trash_bin()
     delete_windows_old()
-
-input("Process abgeschlossen")
-
-
-
+    input("Process abgeschlossen")
 
 
 
