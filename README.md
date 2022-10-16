@@ -1,4 +1,4 @@
-# PY-WINDOWS-CLEANER
+# PY-WINDOWS-CLEANER(GER ONLY)
 Python script that deletes Windows junk files, as well as temp files, and deletes old windows files to free up memory. 
 
 Installation
@@ -11,4 +11,6 @@ UNZIP the file
 
 
 OPEN EXE
+
+
 
